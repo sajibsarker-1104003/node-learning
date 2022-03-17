@@ -1,19 +1,12 @@
 //Events Module
 
-const EventEmitter=require('events');
-const emitter=new EventEmitter();
+const MyEvent =require('./myEvent');
+const myEvent=new MyEvent();
 
-emitter.on('event1',()=>{
+myEvent.on('event1',()=>{
   console.log("Event 1 is called")
 })
-emitter.on('event2',(e)=>{
-  console.log("Event 2 is called",e);
-})
 
-//emitter.emit('event2');
+myEvent.function1();
 
-emitter.emit('event2',{
-  name:'Sajib Sarker',
-  age:25,
-  occupat:'Node Developer'
-});
+
