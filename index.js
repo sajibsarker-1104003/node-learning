@@ -1,12 +1,24 @@
-//Events Module
+// HTTP Module
 
-const MyEvent =require('./myEvent');
-const myEvent=new MyEvent();
+const http=require('http')
 
-myEvent.on('event1',()=>{
-  console.log("Event 1 is called")
-})
+const server=http.createServer((request,response)=>{
+  if(request.url==='/'){
+    response.write("Hello Sajib Sarker");
+    response.end();
+  }
 
-myEvent.function1();
+  if(request.url==='/sajibinfo'){
+    response.write(JSON.stringify([
+      {name:'Sajib Sarker',
+    age:25},
+    {name:'Santha Sarker',age:22}
 
+    ]))
+    response.end();
+  }
+});
 
+server.listen(3000);
+
+console.log("Listening On Port :3000");
