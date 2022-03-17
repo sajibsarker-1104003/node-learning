@@ -1,13 +1,19 @@
-//circle=require('./circle.js');
+//Events Module
 
-//console.log(circle.b(3));
+const EventEmitter=require('events');
+const emitter=new EventEmitter();
 
-const fs=require('fs');
-let text=fs.readFileSync('./File/text.txt','utf8');
+emitter.on('event1',()=>{
+  console.log("Event 1 is called")
+})
+emitter.on('event2',(e)=>{
+  console.log("Event 2 is called",e);
+})
 
-//console.log(text);
+//emitter.emit('event2');
 
-
-text=`Copied Text:${text}`;
-
-fs.writeFileSync('./File/output.txt',text);
+emitter.emit('event2',{
+  name:'Sajib Sarker',
+  age:25,
+  occupat:'Node Developer'
+});
